@@ -1,4 +1,4 @@
-FROM calculator
+FROM node:7
 
 COPY tests tests
 ENV NODE_ENV dev
