@@ -1,126 +1,54 @@
-var request = require('supertest');
+var assert = require('assert');
+ 
+describe('testsuite1', function () {
+    
+    this.timeout(2500);
 
-var app = require('../app').app;
-
-describe('Calculator unit tests', function(){
-    it("happy case add", function(done){
-        request(app)
-            .get("/calculator/add?first=1.2&second=3.4")
-            .set('Accept', 'application/json')
-            .expect('Content-Type', /json/)
-            .expect(200, {result : 4.6})
-            .end(function (err) {
-                if(err) {
-                    return done(err);
-                }
-                return done();
-            })
+    before(function () {
+        
+    });
+  
+    after(function () {
+        
     });
 
-    it("happy case sub", function(done){
-        request(app)
-            .get("/calculator/sub?first=1.2&second=3.4")
-            .set('Accept', 'application/json')
-            .expect('Content-Type', /json/)
-            .expect(200, {result :(1.2 - 3.4)})
-            .end(function (err) {
-                if(err) {
-                    return done(err);
-                }
-                return done();
-            })
+    it('Test method 1', function (done) {
+        throw("error");
     });
 
-    it("happy case multiply", function(done){
-        request(app)
-            .get("/calculator/mul?first=1.2&second=3.4")
-            .set('Accept', 'application/json')
-            .expect('Content-Type', /json/)
-            .expect(200, {result : (1.2 * 3.4)})
-            .end(function (err) {
-                if(err) {
-                    return done(err);
-                }
-                return done();
-            })
+    it('Test method 2', function (done) {
+        done("hello across \n multiple lines \n here");
     });
 
-    it("happy case divide", function(done){
-        request(app)
-            .get("/calculator/div?first=1.2&second=3.4")
-            .set('Accept', 'application/json')
-            .expect('Content-Type', /json/)
-            .expect(200, {result : (1.2 / 3.4)})
-            .end(function (err) {
-                if(err) {
-                    return done(err);
-                }
-                return done();
-            })
+    it('Test method 3', function (done) {
+        this.skip();
     });
 
-    it("missing parameter 'first'", function (done) {
-        request(app)
-            .get("/calculator/add?second=3.4")
-            .expect('Content-Type', /text/)
-            .expect(400, "Missing required parameter 'first'")
-            .end(function (err) {
-                if(err) {
-                    return done(err);
-                }
-                return done();
-            })
+    it('Test method 4', function (done) {
+        this.skip();
     });
 
-    it("missing parameter 'second'", function (done) {
-        request(app)
-            .get("/calculator/add?first=1.2")
-            .expect('Content-Type', /text/)
-            .expect(400, "Missing required parameter 'second'")
-            .end(function (err) {
-                if(err) {
-                    return done(err);
-                }
-                return done();
-            })
+    it('Test method 5', function (done) {
+        done("some stack trace");
     });
 
-    it("wrong parameter 'first'", function (done) {
-        request(app)
-            .get("/calculator/add?first=hello&second=3.4")
-            .expect('Content-Type', /text/)
-            .expect(400, "The parameter 'first' is not a number")
-            .end(function (err) {
-                if(err) {
-                    return done(err);
-                }
-                return done();
-            })
+    it('Test method 6', function (done) {
+        throw("some other error");
     });
 
-    it("wrong parameter 'second'", function (done) {
-        request(app)
-            .get("/calculator/add?first=1.2&second=world")
-            .expect('Content-Type', /text/)
-            .expect(400, "The parameter 'second' is not a number")
-            .end(function (err) {
-                if(err) {
-                    return done(err);
-                }
-                return done();
-            })
+    it('Test method 7', function (done) {
+        done();
     });
 
-    it("dividing by zero'", function (done) {
-        request(app)
-            .get("/calculator/div?first=1.2&second=0")
-            .expect('Content-Type', /text/)
-            .expect(400, "Dividing by zero is not allowed")
-            .end(function (err) {
-                if(err) {
-                    return done(err);
-                }
-                return done();
-            })
+    it('Test method 8', function (done) {
+        done();
+    });
+
+    it('Test method 9', function (done) {
+
+    });
+
+    it('Test method 10', function () {
+
     });
 });
